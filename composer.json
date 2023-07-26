@@ -1,0 +1,15 @@
+{
+    "name": "esmartdata/yh-sdk-php",
+    "autoload": {
+        "psr-4": {
+            "Esmartdata\\YhSdkPhp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Kingsley",
+            "email": "kingsley.li@esmartwave.com"
+        }
+    ],
+    "require": {}
+}
