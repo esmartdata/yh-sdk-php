@@ -2,6 +2,7 @@
     "name": "esmartdata/yh-sdk-php",
     "version": "0.0.1",
     "description": "php sdk",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "Esmartdata\\YhSdkPhp\\": "src/"
