@@ -1,5 +1,5 @@
 <?php
-define('SDK_VERSION', '0.0.2');
+define('SDK_VERSION', '0.0.3');
 define('QA_URL', 'https://tsapiqa.escase.cn');
 define('PROD_URL', 'https://tsapi.escase.cn');
 define('TS_PATH', '/collection/i');
