@@ -1,12 +1,11 @@
 {
     "name": "esmartdata/yh-sdk-php",
-    "version": "0.0.1",
+    "version": "0.0.2",
+    "type": "library",
     "description": "php sdk",
     "license": "MIT",
     "autoload": {
-        "psr-4": {
-            "Esmartdata\\YhSdkPhp\\": "src/"
-        }
+      "files": ["TrackingSystem.php"]
     },
     "authors": [
         {
@@ -14,5 +13,8 @@
             "email": "kingsley.li@esmartwave.com"
         }
     ],
-    "require": {}
+    "require": {
+      "php": ">=7.3.4"
+    },
+
 }
