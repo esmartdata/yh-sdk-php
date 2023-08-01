@@ -1,6 +1,5 @@
 <?php
 define('SDK_VERSION', '0.0.2');
-//define('QA_URL', 'http://localhost:80/collection/i');
 define('QA_URL', 'https://tsapiqa.escase.cn');
 define('PROD_URL', 'https://tsapi.escase.cn');
 define('TS_PATH', '/collection/i');
@@ -236,33 +235,20 @@ class TrackingSystem {
 
     private function processData($data) {
         $data["timestamp"] = $this->getTimestamp();
-//        $newData = array_merge($this->_config, $this->_super_properties, $this->page_info, $data);
         $newData = array_merge($this->_super_properties, $this->page_info, $data);
-
-//        print_r("processData<br/>");
-//        print_r($this->_super_properties);
-//        print_r($newData);
         return $newData;
     }
 
     public function event($data) {
         if (!$data['event_name']) {
-//            echo "事件名称不能为空";
             return;
         }
 
-//        //发起请求的13位时间戳
-//        $data['timestamp'] = $this->getTimestamp();
         //整合公共属性
-//        $event_data = array_merge($this->_config, $this->_super_properties, $data);
         $data["key"] = "event";
         $event_data = $this->processData($data);
 
-//        print_r("event_data================<br/>");
-//        print_r($event_data);
-
         //发送事件请求
-//        $this->sendRequest($this->_config['server_url'], $event_data);
         $this->_consumer->send($event_data);
     }
 
@@ -276,7 +262,7 @@ class TrackingSystem {
             }
 
         }
-//            echo json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . '<br />';
+
         //发送事件请求
         $this->sendRequest($this->_config['batch_url'], $data);
     }
@@ -399,12 +385,7 @@ class BatchConsumer extends AbstractConsumer {
             $params["content"] = base64_encode(json_encode($data[0]));
         }
 
-//        print_r("_do_request================<br/>");
-//        print_r($this->_url_prefix."<br/>");
-//        print_r($params);
         $params = json_encode($data[0], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
-//        print_r($params);
-
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-type: application/json"));
@@ -427,9 +408,6 @@ class BatchConsumer extends AbstractConsumer {
 
         $ret = curl_exec($ch);
 
-//        print_r("请求返回================<br/>");
-//        print_r($ret);
-        // judge back detail response
         if($this->_response_info){
             $result = array(
                 "ret_content" => $ret,
@@ -619,9 +597,3 @@ class TrackingUtils {
         return explode(" ", $os);
     }
 }
-
-//1、引入SDK并初始化配置
-//2、设置公共属性（如用户信息）
-//3、调用事件发送事件请求
-//4、批量发送事件
-//5、设置渠道参数
